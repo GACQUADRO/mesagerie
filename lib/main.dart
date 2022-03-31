@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mesagerie/register.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:mesagerie/fonctions/firebaseFonc.dart';
+import 'package:mesagerie/dashboard.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,8 +34,13 @@ class MyStatefulWidget extends StatefulWidget {
   State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
 }
 
+
+
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  late String mail;
+  late String password;
 
   @override
   Widget build(BuildContext context) {
@@ -54,6 +60,11 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         children: <Widget>[
           SizedBox(height: 10),
           TextFormField(
+            onChanged: (value){
+              setState(() {
+                mail = value;
+              });
+            },
             //obscureText: true,
             decoration: InputDecoration(
               border: OutlineInputBorder(),
@@ -68,6 +79,11 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           ),
           SizedBox(height: 10),
           TextFormField(
+            onChanged: (value){
+              setState(() {
+                password = value;
+              });
+            },
             obscureText: true,
             decoration: InputDecoration(
               border: OutlineInputBorder(),
@@ -83,12 +99,20 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           SizedBox(height: 10),
           ElevatedButton(
             onPressed: () {
-              // Validate will return true if the form is valid, or false if
-              // the form is invalid.
-              if (_formKey.currentState!.validate()) {
-                // Process data.
-              }
-            },
+            firebaseFonc().Connexion(mail, password).then((value){
+              print("Connexion réussi");
+
+              Navigator.push(context, MaterialPageRoute(
+                  builder: (context){
+                    return dashboard();
+                  }
+              ));
+
+            }).catchError((onError){
+              print("Connexion erroné");
+            });
+    },
+
             child: const Text('Submit'),
           ),
          InkWell(
