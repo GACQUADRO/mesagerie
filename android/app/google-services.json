@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "346940109158",
+    "project_id": "messagerie-fb80d",
+    "storage_bucket": "messagerie-fb80d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:346940109158:android:4e8ed33e1768bc134d58a7",
+        "android_client_info": {
+          "package_name": "com.example.application_message"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "346940109158-bdr3i9o8hpm87rh7eddlhkv5qc6gu9im.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDC4LEZYryhvA07bNTcgrz3PJFNG4BEdS0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "346940109158-bdr3i9o8hpm87rh7eddlhkv5qc6gu9im.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "346940109158-khbto5u1psfomr10j80kc9utocmhr8i9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.applicationMessage"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
