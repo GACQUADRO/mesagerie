@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mesagerie/fonctions/firebaseFonc.dart';
 
 class register extends StatefulWidget {
   @override
@@ -11,8 +12,7 @@ class register extends StatefulWidget {
 class registerState extends State<register> {
   String mail = "";
   late String password;
-  late String nom;
-  late String prenom;
+  late String pseudo;
 
   @override
   Widget build(BuildContext context) {
@@ -73,8 +73,7 @@ class registerState extends State<register> {
         SizedBox(height: 10),
         ElevatedButton(
           onPressed: () {
-            // Validate will return true if the form is valid, or false if
-            // the form is invalid.
+           firebaseFonc().Inscription(mail, password, pseudo);
           },
           child: const Text('Confirm'),
         ),
