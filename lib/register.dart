@@ -32,6 +32,12 @@ class registerState extends State<register> {
     return Column(
       children: [
         TextFormField(
+          onChanged: (value){
+            setState(() {
+              pseudo = value;
+            });
+
+          },
           decoration: InputDecoration(
             border: OutlineInputBorder(),
             labelText: 'Pseudo',
@@ -45,6 +51,12 @@ class registerState extends State<register> {
         ),
         SizedBox(height: 10),
         TextFormField(
+          onChanged: (value){
+            setState(() {
+              mail = value;
+            });
+
+          },
           decoration: InputDecoration(
             border: OutlineInputBorder(),
             labelText: 'Mail',
@@ -58,6 +70,12 @@ class registerState extends State<register> {
         ),
         SizedBox(height: 10),
         TextFormField(
+          onChanged: (value){
+            setState(() {
+              password = value;
+            });
+
+          },
           obscureText: true,
           decoration: InputDecoration(
             border: OutlineInputBorder(),
