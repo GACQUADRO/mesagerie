@@ -92,6 +92,7 @@ class registerState extends State<register> {
         ElevatedButton(
           onPressed: () {
            firebaseFonc().Inscription(mail, password, pseudo);
+           print(mail);
           },
           child: const Text('Confirm'),
         ),

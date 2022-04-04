@@ -21,7 +21,7 @@ class dashboardState extends State<dashboard>{
     return Scaffold(
       //drawer: myDrawer(),
       appBar: AppBar(
-        title: Text("Mon application"),
+        title: Text("TikTak"),
       ),
       body: bodyPage(),
     );
@@ -76,10 +76,15 @@ class dashboardState extends State<dashboard>{
                         ),
                       ),
 
-                      title: Text("${user.pseudo} ${user.mail}"),
+                      title: Text("${user.pseudo}"),
                       trailing: IconButton(
-                        icon: Icon(Icons.edit),
+                        icon: Icon(Icons.chat_bubble),
                         onPressed: (){
+                          Navigator.push(context, MaterialPageRoute(
+                              builder: (context){
+                                return dashboard();
+                              }
+                          ));
                           print("modification");
                         },
                       ),
