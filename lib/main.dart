@@ -13,7 +13,7 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  static const String _title = 'Messagerie';
+  static const String _title = 'Tiktak';
 
   @override
   Widget build(BuildContext context) {

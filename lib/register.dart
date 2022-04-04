@@ -93,8 +93,34 @@ class registerState extends State<register> {
           onPressed: () {
            firebaseFonc().Inscription(mail, password, pseudo);
            print(mail);
+           showDialog(
+             context: context,
+             builder: (BuildContext context) => _buildPopupDialog(context),
+           );
           },
           child: const Text('Confirm'),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildPopupDialog(BuildContext context) {
+    return new AlertDialog(
+      title: const Text('Inscription réussie !'),
+      content: new Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text("Vous pouvez maintenant vous connectez à l'application."),
+        ],
+      ),
+      actions: <Widget>[
+        new FlatButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          textColor: Theme.of(context).primaryColor,
+          child: const Text('Fermer'),
         ),
       ],
     );

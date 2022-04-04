@@ -1,4 +1,4 @@
-/*import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:mesagerie/Model/Utilisateur.dart';
 
 class detail extends StatefulWidget{
@@ -55,4 +55,4 @@ class detailState extends State<detail>{
   }
 
 }
-*/
+
