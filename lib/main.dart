@@ -58,7 +58,9 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       key: _formKey,
       child: Column(
         children: <Widget>[
+
           SizedBox(height: 10),
+          // champ pour le mail
           TextFormField(
             onChanged: (value){
               setState(() {
@@ -70,6 +72,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
               border: OutlineInputBorder(),
               labelText: 'Email',
             ),
+            // on check si le champ mail est bien remplie
             validator: (String? value) {
               if (value == null || value.isEmpty) {
                 return 'Please enter a mail';
@@ -78,6 +81,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             },
           ),
           SizedBox(height: 10),
+          // champ pour le mot de passe
           TextFormField(
             onChanged: (value){
               setState(() {
@@ -89,6 +93,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
               border: OutlineInputBorder(),
               labelText: 'Password',
             ),
+            // on check si le champ mp est bien remplie
             validator: (String? value) {
               if (value == null || value.isEmpty) {
                 return 'Please enter a password';
@@ -97,11 +102,12 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             },
           ),
           SizedBox(height: 10),
+          // Button pour la connection
           ElevatedButton(
             onPressed: () {
             firebaseFonc().Connexion(mail, password).then((value){
               print("Connexion réussi");
-
+              // renvoie vers la page dashboard
               Navigator.push(context, MaterialPageRoute(
                   builder: (context){
                     return dashboard();
@@ -115,6 +121,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
 
             child: const Text('Submit'),
           ),
+         // lien vers la page de creation de compte
          InkWell(
             child: Text(
               "Inscription",

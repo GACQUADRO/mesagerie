@@ -31,6 +31,7 @@ class registerState extends State<register> {
   Widget bodyPage() {
     return Column(
       children: [
+        // champ pour le pseudo
         TextFormField(
           onChanged: (value){
             setState(() {
@@ -42,6 +43,7 @@ class registerState extends State<register> {
             border: OutlineInputBorder(),
             labelText: 'Pseudo',
           ),
+          // on check si le champ est bien remplie
           validator: (String? value) {
             if (value == null || value.isEmpty) {
               return 'Please enter a pseudo';
@@ -50,6 +52,7 @@ class registerState extends State<register> {
           },
         ),
         SizedBox(height: 10),
+        // champ pour le mail
         TextFormField(
           onChanged: (value){
             setState(() {
@@ -61,6 +64,7 @@ class registerState extends State<register> {
             border: OutlineInputBorder(),
             labelText: 'Mail',
           ),
+          // on check si le champ est bien remplie
           validator: (String? value) {
             if (value == null || value.isEmpty) {
               return 'Please enter a mail';
@@ -69,6 +73,7 @@ class registerState extends State<register> {
           },
         ),
         SizedBox(height: 10),
+        // champ pour le mp
         TextFormField(
           onChanged: (value){
             setState(() {
@@ -81,6 +86,7 @@ class registerState extends State<register> {
             border: OutlineInputBorder(),
             labelText: 'Password',
           ),
+          // on check si le champ est bien remplie
           validator: (String? value) {
             if (value == null || value.isEmpty) {
               return 'Please enter a password';
@@ -89,6 +95,7 @@ class registerState extends State<register> {
           },
         ),
         SizedBox(height: 10),
+        // le button d'inscription
         ElevatedButton(
           onPressed: () {
            firebaseFonc().Inscription(mail, password, pseudo);
@@ -104,6 +111,8 @@ class registerState extends State<register> {
     );
   }
 
+
+  // le pop up
   Widget _buildPopupDialog(BuildContext context) {
     return new AlertDialog(
       title: const Text('Inscription réussie !'),

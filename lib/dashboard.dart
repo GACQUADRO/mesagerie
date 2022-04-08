@@ -35,10 +35,12 @@ class dashboardState extends State<dashboard> {
             return CircularProgressIndicator();
           } else {
             List documents = snapshot.data!.docs;
+            // on recupere a partir de la bdd sous form d'un liste tous les users
             return ListView.builder(
                 itemCount: documents.length,
                 itemBuilder: (context, index) {
                   Utilisateur user = Utilisateur(documents[index]);
+                  // la form d'un user
                   return Card(
                     elevation: 5.0,
                     shape: RoundedRectangleBorder(
