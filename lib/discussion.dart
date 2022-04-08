@@ -7,6 +7,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 class discussion extends StatefulWidget {
   Utilisateur user;
+
   discussion({required Utilisateur this.user});
   @override
   State<StatefulWidget> createState() {
@@ -22,19 +23,50 @@ class discussionState extends State<discussion> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-      appBar: AppBar(
-        title: Text("${widget.user.pseudo}"),
-      ),
-      body: Center(
-        child: bodyPage(),
-      ),
-      /*appBar: AppBar(
-        title: inputZone(),
-      ),*/
-
-      //bottomSheet: inputZone(),
-      //bottomNavigationBar: inputZone()
-    );
+        appBar: AppBar(
+          title: Text("${widget.user.pseudo}"),
+        ),
+        body: Center(
+          child: bodyPage(),
+        ),
+        bottomNavigationBar: BottomAppBar(
+          child: new Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Flexible(
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: TextField(
+                    controller: myController,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Send a message',
+                    ),
+                  ),
+                ),
+              ),
+              FloatingActionButton(
+                backgroundColor: Colors.blue,
+                onPressed: () {
+                  builder:
+                  (context) {
+                    return AlertDialog(
+                      content: Text(myController.text),
+                    );
+                  };
+                  DateTime times = DateTime.now();
+                  firebaseFonc().sendMsg(myController.text,
+                      firebaseFonc().cur_user?.email, widget.user.mail, times);
+                },
+                child: Icon(
+                  Icons.arrow_right_rounded,
+                  size: 45,
+                  color: Colors.black,
+                ),
+              ),
+            ],
+          ),
+        ));
   }
 
   final myController = TextEditingController();
@@ -62,13 +94,7 @@ class discussionState extends State<discussion> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(15)),
                       child: ListTile(
-                        onTap: () {
-                          /* Navigator.push(context, MaterialPageRoute(
-                            builder: (context){
-                              return detail(user: user,);
-                            }
-                        ));*/
-                        },
+                        onTap: () {},
                         title: Text("${msg.content}"),
                       ),
                     );
@@ -81,49 +107,5 @@ class discussionState extends State<discussion> {
                 });
           }
         });
-  }
-
-  Widget inputZone() {
-    return Form(
-      child: Column(children: <Widget>[
-        SizedBox(height: 50),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Flexible(
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: TextField(
-                  controller: myController,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Send a message',
-                  ),
-                ),
-              ),
-            ),
-            FloatingActionButton(
-              backgroundColor: Colors.blue,
-              onPressed: () {
-                builder:
-                (context) {
-                  return AlertDialog(
-                    content: Text(myController.text),
-                  );
-                };
-                DateTime times = DateTime.now();
-                firebaseFonc().sendMsg(myController.text,
-                    firebaseFonc().cur_user?.email, widget.user.mail, times);
-              },
-              child: Icon(
-                Icons.arrow_right_rounded,
-                size: 45,
-                color: Colors.black,
-              ),
-            ),
-          ],
-        ),
-      ]),
-    );
   }
 }
