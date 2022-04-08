@@ -31,10 +31,10 @@
               "client_type": 3
             },
             {
-              "client_id": "346940109158-khbto5u1psfomr10j80kc9utocmhr8i9.apps.googleusercontent.com",
+              "client_id": "346940109158-6ijd2k631a57merss3292c01r4j1sohb.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.example.applicationMessage"
+                "bundle_id": "com.example.mesagerie"
               }
             }
           ]
